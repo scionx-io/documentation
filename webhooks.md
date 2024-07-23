@@ -1,0 +1,76 @@
+# Webhooks
+
+## Event: `charge.completed`
+
+### Description
+The `charge.completed` event is dispatched when a transaction is confirmed by the system.
+
+### Example Response
+```json
+{
+  "id": "0190e159-03f9-7cca-8f86-c1525ad0d9d1",
+  "chain": 12345,
+  "tx": "0x3558ea1fab0a81459eff4b65d5d4a5a3853754a0aedf1d2ca80d7bc92ed86046",
+  "status": "completed",
+  "payee": "0x303d6C905F2476f8bbe16dD9dCe9d5367241c404",
+  "web3_data": {
+    "transfer_intent": {
+      "metadata": {
+        "sender": "0x303d6C905F2476f8bbe16dD9dCe9d5367241c404",
+        "chain_id": 12345,
+        "public_id": "0190e159-03f9-7cca-8f86-c1525ad0d9d1",
+        "contract_address": "0xCd9006108BFF9a8F602C9F2329cCc4778F938de4"
+      },
+      "call_data": {
+        "id": "0xec3dc2e6bc8030b4a02a1efa33fa4c2a",
+        "deadline": 1721928943,
+        "operator": "0x48F945aafB38658243d38eEb89538e879fba4781",
+        "recipient": "0x0e522e18707b50501e98358896b4b716850ba0b5",
+        "signature": "0x33a44ffdb2eb6100a59fb54fccf144b7f8551bd9677f5a579c8e0a646135bed90c9f927bfd0e428072f76a07c58ad852d42aa49cfda9fafc9e1706c5d050689b1b",
+        "fee_amount": 10000,
+        "recipient_amount": 990000,
+        "recipient_currency": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+        "refund_destination": "0x303d6C905F2476f8bbe16dD9dCe9d5367241c404"
+      }
+    },
+    "hash_receipt": {
+      "id": 1,
+      "jsonrpc": "2.0",
+      "result": {
+        "type": "0x0",
+        "status": "0x1",
+        "cumulativeGasUsed": "0x3bc96",
+        "logsBloom": "0x84000000000000000000000000000000000000080001000000000000000200000000000000000000000404100000040000008000000160000000000000000000000000080000400800000018000000800000040000400000000100418020020002000800002004000000000020000000000100000001040080000010001800000000000000000000000000000000000000000101000000000000000000000000200000000000000000000000000100004840000000000200000000100000004000000402400400000001000000000008000000000000800000108042004000000000000000000000100000000000010000001000100000400000000000100800",
+        "logs": [
+          {
+            "address": "0x0000000000000000000000000000000000001010",
+            "topics": [
+              "0xe6497e3ee548a3372136af2fcb0696db31fc6cf20260707645068bd3fe97f3c4",
+              "0x0000000000000000000000000000000000000000000000000000000000001010",
+              "0x000000000000000000000000303d6c905f2476f8bbe16dd9dce9d5367241c404",
+              "0x000000000000000000000000cd9006108bff9a8f602c9f2329ccc4778f938de4"
+            ],
+            "data": "0x0000000000000000000000000000000000000000000000001b650430dde8670e00000000000000000000000000000000000000000000000548cfb40f28fb8def00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000052d6aafde4b1326e10000000000000000000000000000000000000000000000001b650430dde8670e",
+            "blockNumber": "0x38ca7f0",
+            "transactionHash": "0x3558ea1fab0a81459eff4b65d5d4a5a3853754a0aedf1d2ca80d7bc92ed86046",
+            "transactionIndex": "0x0",
+            "blockHash": "0x54f7c9703bd69373991f6d7993ee6235e4c62b578a2e8a4589fd85003014d91b",
+            "logIndex": "0x0",
+            "removed": false
+          }
+        ],
+        "transactionHash": "0x3558ea1fab0a81459eff4b65d5d4a5a3853754a0aedf1d2ca80d7bc92ed86046",
+        "from": "0x303d6c905f2476f8bbe16dd9dce9d5367241c404",
+        "to": "0xcd9006108bff9a8f602c9f2329ccc4778f938de4",
+        "contractAddress": null,
+        "gasUsed": "0x3bc96",
+        "effectiveGasPrice": "0x7",
+        "blockHash": "0x54f7c9703bd69373991f6d7993ee6235e4c62b578a2e8a4589fd85003014d91b",
+        "blockNumber": "0x38ca7f0",
+        "transactionIndex": "0x0",
+        "blobGasUsed": "0x0"
+      }
+    }
+  }
+}
+```
