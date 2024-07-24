@@ -14,4 +14,5 @@ For detailed information on how to use our API, including endpoints, request par
 
 ## Webhook Documentation
 
-For detailed information on webhook events, please refer to our [Webhook Documentation](webhooks.md).
+* [charge.completed](charge.completed.md)
+* [charge.failed](charge.failed.md)
