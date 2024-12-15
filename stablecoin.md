@@ -168,31 +168,3 @@ graph LR
     classDef phase fill:#e1f5fe,stroke:#01579b
     class Phase1,Phase2,Phase3 phase
 ```
-
-Implementation Timeline Example:
-
-Phase 1 (3-4 months):
-- Week 1-4: Banking partnerships establishment
-- Week 5-8: Smart contract development and testing
-- Week 9-12: Initial compliance framework setup
-- Week 13-16: Integration testing
-
-Phase 2 (2-3 months):
-- Week 1-4: Security audit by firms like Trail of Bits
-- Week 5-8: Pilot with selected institutional partners
-- Week 9-12: Regulatory consultation and adjustments
-
-Phase 3 (Ongoing):
-- Month 1: Limited launch with transaction caps
-- Month 2-3: Gradual increase in transaction limits
-- Month 4+: Full-scale operations with continuous monitoring
-
-Real-world Integration Example:
-A UAE trading company using the AED stablecoin for cross-border payments:
-1. Company receives USD payment from international client
-2. Converts USD to AED stablecoin through licensed exchange
-3. Uses stablecoin for instant settlements with local suppliers
-4. Suppliers can instantly redeem for AED through banking partners
-5. All transactions are recorded on-chain and reportable to regulators
-
-This implementation provides the efficiency of blockchain technology while maintaining the stability and regulatory compliance needed for a UAE dirham-backed stablecoin.
