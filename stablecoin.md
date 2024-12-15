@@ -112,30 +112,156 @@ When a user wants to mint 100,000 AED tokens:
 3. Smart contract mints equivalent tokens
 4. Regular audit confirms matching of tokens to reserves
 
-### 2. Alternative Models (Not Recommended)
+# Alternative Stablecoin Models (Not Recommended)
 
-The following models present significant risks and are not suitable for an AED stablecoin:
+## 1. Crypto-Collateralized Model
 
-1. Crypto-Collateralized
-   - Requires 150-200% collateralization
-   - Vulnerable to market volatility
-   - Complex liquidation mechanisms
-   - High technical risk from smart contracts and oracles
-   
-   Example: DAI's March 2020 Crisis
-   - ETH price crashed by 50% in 24 hours
-   - Triggered $8.32 million in forced liquidations
-   - Required emergency measures to maintain stability
-   - Demonstrated vulnerability to market volatility
+This model relies on cryptocurrency collateral, typically requiring significant over-collateralization to account for market volatility.
 
-2. Algorithmic
-   - History of catastrophic failures
-   - Susceptible to death spirals
-   - High manipulation risk
-   - Regulatory concerns
-   
-   Example: Terra/LUNA Collapse (May 2022)
-   - $40 billion loss in market value
-   - Triggered broader crypto market crisis
-   - Failed to maintain USD peg despite algorithmic controls
-   - Led to increased regulatory scrutiny globally
+```mermaid
+graph TB
+    subgraph Collateral["Collateral Management"]
+        Deposit["Crypto Deposits (ETH/BTC)"]
+        Ratio["Collateral Ratio 150-200%"]
+        Vault["Collateral Vault"]
+        Price["Price Oracles"]
+    end
+
+    subgraph Mechanisms["Stability Mechanisms"]
+        Monitor["Position Monitor"]
+        Liquidate["Liquidation Engine"]
+        Auction["Auction System"]
+    end
+
+    subgraph Risks["Risk Factors"]
+        Market["Market Crashes"]
+        Oracle["Oracle Failures"]
+        Network["Network Congestion"]
+        Smart["Smart Contract Bugs"]
+    end
+
+    Deposit -->|Locks into| Vault
+    Vault -->|Monitored by| Monitor
+    Price -->|Updates| Monitor
+    Monitor -->|Triggers| Liquidate
+    Liquidate -->|Executes| Auction
+
+    Market -->|Impacts| Vault
+    Oracle -->|Affects| Monitor
+    Network -->|Delays| Liquidate
+    Smart -->|Compromises| Vault
+
+    classDef critical fill:#ffcdd2,stroke:#b71c1c
+    classDef warning fill:#fff3cd,stroke:#856404
+    classDef process fill:#e1f5fe,stroke:#01579b
+    class Risks critical
+    class Mechanisms warning
+    class Collateral process
+```
+
+Example Case Study - DAI's March 2020 Crisis:
+When ETH crashed 50% in 24 hours, the system experienced:
+- $8.32 million forced liquidations
+- Network congestion preventing timely liquidations
+- Zero-bid liquidation auctions
+- Required emergency governance interventions
+
+## 2. Algorithmic Model
+
+This model attempts to maintain price stability through automated supply adjustments, but has proven highly unstable in practice.
+
+```mermaid
+graph TB
+    subgraph Algorithm["Price Stability Algorithm"]
+        Target["Price Target ($1)"]
+        Supply["Token Supply"]
+        Demand["Market Demand"]
+        Rebase["Rebase Mechanism"]
+    end
+
+    subgraph Spiral["Death Spiral Mechanism"]
+        Loss["Price Drop"]
+        Panic["User Panic"]
+        Sell["Mass Selling"]
+        Drop["Further Price Drop"]
+    end
+
+    subgraph Market["Market Operations"]
+        Trade["Trading Activity"]
+        Arb["Arbitrage"]
+        Bond["Bonding Curve"]
+    end
+
+    Supply -->|Adjusts to| Target
+    Demand -->|Influences| Trade
+    Trade -->|Affects| Target
+    Rebase -->|Modifies| Supply
+    Bond -->|Controls| Trade
+
+    Loss -->|Triggers| Panic
+    Panic -->|Causes| Sell
+    Sell -->|Creates| Drop
+    Drop -->|Amplifies| Loss
+
+    classDef algo fill:#e1f5fe,stroke:#01579b
+    classDef danger fill:#ffcdd2,stroke:#b71c1c
+    classDef market fill:#fff3cd,stroke:#856404
+    class Algorithm algo
+    class Spiral danger
+    class Market market
+```
+
+Example Case Study - Terra/LUNA Collapse (May 2022):
+- Started with minor price deviation from $1
+- Arbitrage mechanism failed to restore peg
+- Death spiral activated: UST depeg → LUNA inflation → further UST depeg
+- Resulted in complete system collapse within 72 hours
+- $40 billion in value destroyed
+
+## 3. Hybrid Model Risks
+
+Hybrid models attempt to combine multiple stability mechanisms but often inherit the weaknesses of each approach.
+
+```mermaid
+graph LR
+    subgraph Components["Hybrid Components"]
+        Fiat["Partial Fiat Backing"]
+        Crypto["Crypto Collateral"]
+        Algo["Algorithmic Element"]
+    end
+
+    subgraph Interactions["System Interactions"]
+        Ratio["Backing Ratio"]
+        Stab["Stability Module"]
+        Control["Control System"]
+    end
+
+    subgraph Failures["Failure Modes"]
+        Bank["Bank Run"]
+        Crash["Collateral Crash"]
+        Bug["Algorithm Failure"]
+        Combined["Cascading Failure"]
+    end
+
+    Fiat -->|Partially backs| Ratio
+    Crypto -->|Supplements| Ratio
+    Algo -->|Adjusts| Control
+    Control -->|Maintains| Ratio
+
+    Bank -->|Triggers| Combined
+    Crash -->|Amplifies| Combined
+    Bug -->|Compounds| Combined
+
+    classDef hybrid fill:#e1f5fe,stroke:#01579b
+    classDef interact fill:#fff3cd,stroke:#856404
+    classDef fail fill:#ffcdd2,stroke:#b71c1c
+    class Components hybrid
+    class Interactions interact
+    class Failures fail
+```
+
+Key Historical Failures:
+- Iron Finance (IRON/TITAN): Partial collateral model that collapsed in June 2021
+- Basis Cash: Attempted algorithmic stability, failed to maintain peg
+- Empty Set Dollar: Complex hybrid model that ultimately failed
+
