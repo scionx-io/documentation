@@ -45,58 +45,53 @@ This model provides the most stable and regulatory-compliant approach for an AED
 
 ```mermaid
 graph TB
-    subgraph ReserveStructure["Reserve Structure (PTSR Compliant)"]
-        Escrow["Designated Escrow Account"]
-        Bank["UAE Licensed Bank"]
-        Audit["External Auditor"]
-        Monitor["CBUAE Monitoring"]
+    subgraph AuditProcess["Monthly External Audit Process"]
+        Plan["Audit Planning"]
+        Execute["Audit Execution"]
+        Report["Audit Reporting"]
+        Follow["Follow-up Actions"]
     end
 
-    subgraph Operations["Token Operations"]
-        Mint["Minting Process"]
-        Burn["Burning Process"]
-        Transfer["Transfer System"]
-        Cap["Volume Caps"]
+    subgraph AuditScope["Required Audit Scope"]
+        Reserve["Reserve Verification"]
+        Smart["Smart Contract Audit"]
+        Control["Control Systems"]
+        Comply["Compliance Check"]
     end
 
-    subgraph Compliance["Compliance & Controls"]
-        KYC["KYC/AML Systems"]
-        Report["Daily CBUAE Reporting"]
-        Risk["Risk Management"]
-        Records["Transaction Records"]
+    subgraph Verification["Verification Areas"]
+        Balance["1:1 Reserve Ratio"]
+        Trans["Transaction Records"]
+        Risk["Risk Controls"]
+        Tech["Technical Systems"]
     end
 
-    subgraph Safeguards["Reserve Safeguards"]
-        Seg["Fund Segregation"]
-        Rec["Daily Reconciliation"]
-        Auth["Multi-sig Authorization"]
-        Block["Emergency Blocking"]
+    subgraph Reports["Required Reports"]
+        CBUAE["CBUAE Report"]
+        Public["Public Attestation"]
+        Board["Board Report"]
+        Action["Action Items"]
     end
 
-    Escrow -->|100% Backing| Mint
-    Bank -->|Holds| Escrow
-    Audit -->|Monthly Verification| Escrow
-    Monitor -->|Real-time View| Escrow
+    Plan -->|Defines| AuditScope
+    Execute -->|Covers| Verification
+    Report -->|Produces| Reports
+    Follow -->|Updates| Action
 
-    KYC -->|Validates| Mint
-    KYC -->|Controls| Transfer
-    Cap -->|Limits| Transfer
-    Risk -->|Monitors| Operations
+    Reserve -->|Checks| Balance
+    Smart -->|Reviews| Tech
+    Control -->|Assesses| Risk
+    Comply -->|Validates| Trans
 
-    Seg -->|Protects| Escrow
-    Auth -->|Controls| Mint
-    Auth -->|Controls| Burn
-    Block -->|Emergency| Operations
+    Balance -->|Confirms| CBUAE
+    Risk -->|Informs| Board
+    Tech -->|Details in| Action
+    Trans -->|Supports| Public
 
-    Report -->|Updates| Monitor
-    Records -->|Tracks| Operations
-
-    classDef critical fill:#f9d5e5,stroke:#881337
-    classDef main fill:#dbeafe,stroke:#1e40af
-    classDef control fill:#f0fdf4,stroke:#166534
-    class ReserveStructure critical
-    class Operations main
-    class Compliance,Safeguards control
+    classDef primary fill:#e1f5fe,stroke:#01579b
+    classDef secondary fill:#f3e5f5,stroke:#4a148c
+    class AuditProcess,AuditScope primary
+    class Verification,Reports secondary
 ```
 
 Key Implementation Features:
