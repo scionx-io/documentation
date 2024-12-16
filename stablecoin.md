@@ -45,35 +45,58 @@ This model provides the most stable and regulatory-compliant approach for an AED
 
 ```mermaid
 graph TB
-    subgraph ReserveSystem["AED Reserve Structure"]
-        Primary["Direct AED Deposits"]
-        Banking["UAE Banking Partners"]
-        Monitor["Independent Monitoring"]
+    subgraph ReserveStructure["Reserve Structure (PTSR Compliant)"]
+        Escrow["Designated Escrow Account"]
+        Bank["UAE Licensed Bank"]
+        Audit["External Auditor"]
+        Monitor["CBUAE Monitoring"]
     end
 
-    subgraph Operations["Stablecoin Operations"]
+    subgraph Operations["Token Operations"]
         Mint["Minting Process"]
         Burn["Burning Process"]
         Transfer["Transfer System"]
+        Cap["Volume Caps"]
     end
 
-    subgraph Controls["Control Systems"]
+    subgraph Compliance["Compliance & Controls"]
+        KYC["KYC/AML Systems"]
+        Report["Daily CBUAE Reporting"]
         Risk["Risk Management"]
-        Compliance["Regulatory Compliance"]
-        Report["Public Reporting"]
+        Records["Transaction Records"]
     end
 
-    Primary -->|Fully Backs| Operations
-    Banking -->|Holds| Primary
-    Monitor -->|Oversees| Primary
-    Operations -->|Governed by| Controls
+    subgraph Safeguards["Reserve Safeguards"]
+        Seg["Fund Segregation"]
+        Rec["Daily Reconciliation"]
+        Auth["Multi-sig Authorization"]
+        Block["Emergency Blocking"]
+    end
 
-    classDef primary fill:#e1f5fe,stroke:#01579b
-    classDef ops fill:#f3e5f5,stroke:#4a148c
-    classDef control fill:#fff3e0,stroke:#e65100
-    class ReserveSystem primary
-    class Operations ops
-    class Controls control
+    Escrow -->|100% Backing| Mint
+    Bank -->|Holds| Escrow
+    Audit -->|Monthly Verification| Escrow
+    Monitor -->|Real-time View| Escrow
+
+    KYC -->|Validates| Mint
+    KYC -->|Controls| Transfer
+    Cap -->|Limits| Transfer
+    Risk -->|Monitors| Operations
+
+    Seg -->|Protects| Escrow
+    Auth -->|Controls| Mint
+    Auth -->|Controls| Burn
+    Block -->|Emergency| Operations
+
+    Report -->|Updates| Monitor
+    Records -->|Tracks| Operations
+
+    classDef critical fill:#f9d5e5,stroke:#881337
+    classDef main fill:#dbeafe,stroke:#1e40af
+    classDef control fill:#f0fdf4,stroke:#166534
+    class ReserveStructure critical
+    class Operations main
+    class Compliance,Safeguards control
 ```
 
 Key Implementation Features:
